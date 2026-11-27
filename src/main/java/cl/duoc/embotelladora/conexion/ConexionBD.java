@@ -18,7 +18,6 @@ public class ConexionBD {
                     conexion.close();
                 }
             } catch (SQLException e) {
-                // No propagamos error al cerrar la conexion
             }
         }
     }
