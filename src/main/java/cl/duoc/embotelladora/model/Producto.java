@@ -6,14 +6,14 @@ public abstract class Producto  implements GestionInventario{
     private String nombre;
     private double precioUnitario;
     private int stock;
-    private int volumenML;
+    private int volumenMl;
 
-    public Producto(String codigo, String nombre, double precioUnitario, int stock, int volumenML) {
+    public Producto(String codigo, String nombre, double precioUnitario, int stock, int volumenMl) {
         setCodigo(codigo);
         setNombre(nombre);
         setPrecioUnitario(precioUnitario);
         setStock(stock);
-        setVolumenML(volumenML);
+        setVolumenMl(volumenMl);
     }
 
     public String getCodigo(){
@@ -60,16 +60,16 @@ public abstract class Producto  implements GestionInventario{
         this.stock = stock;
     }
 
-    public int getVolumenML() {
-        return volumenML;
+    public int getVolumenMl() {
+        return volumenMl;
     }
 
-    public void setVolumenML(int volumenML) {
-        if(volumenML <= 0){
+    public void setVolumenMl (int volumenMl) {
+        if(volumenMl <= 0){
             throw new IllegalArgumentException("El volumen (ml) debe ser mayor que cero.");
         }
 
-        this.volumenML = volumenML;
+        this.volumenMl = volumenMl;
     }
 
     @Override

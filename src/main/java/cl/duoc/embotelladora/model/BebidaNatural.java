@@ -48,6 +48,6 @@ public class BebidaNatural extends Producto {
     @Override
     public String obtenerDescripcion() {
         String conservantes = contieneConservantes ? "con conservantes" : "sin conservantes";
-        return porcentajeFruta + "% fruta, " + conservantes + ", " + getVolumenML() + " ml";
+        return porcentajeFruta + "% fruta, " + conservantes + ", " + getVolumenMl() + " ml";
     }
 }

@@ -50,7 +50,7 @@ public class BebidaCarbonatada extends Producto{
 
     @Override
     public String obtenerDescripcion() {
-        return "Sabor " + sabor + ", gas " + nivelGasificacion + " vol, " + getVolumenML() + " ml";
+        return "Sabor " + sabor + ", gas " + nivelGasificacion + " vol, " + getVolumenMl() + " ml";
 
     }
 }

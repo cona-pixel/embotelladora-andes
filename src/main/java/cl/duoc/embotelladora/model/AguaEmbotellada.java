@@ -69,6 +69,6 @@ public class AguaEmbotellada extends Producto{
 
     @Override
     public String obtenerDescripcion() {
-        return "Agua " + tipoAgua + ", origen " + origen + ", " + getVolumenML() + " ml" ;
+        return "Agua " + tipoAgua + ", origen " + origen + ", " + getVolumenMl() + " ml" ;
     }
 }
