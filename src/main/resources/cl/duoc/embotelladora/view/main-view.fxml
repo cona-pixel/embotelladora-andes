@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="cl.duoc.embotelladora.controller.MainController"
+      spacing="10" prefWidth="1180" prefHeight="680" style="-fx-font-size: 13px;">
+    <padding>
+        <Insets top="14" right="14" bottom="14" left="14"/>
+    </padding>
+    <HBox spacing="12" alignment="CENTER_LEFT">
+        <Label text="Embotelladora Los Andes — Inventario y Produccion"
+               style="-fx-font-size: 18px; -fx-font-weight: bold;" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+        <Button text="Ir a Despachos y Clientes" onAction="#onAbrirDespachos"
+                style="-fx-font-weight: bold;"/>
+    </HBox>
+    <HBox spacing="16" VBox.vgrow="ALWAYS">
+
+        <VBox spacing="8" prefWidth="350" minWidth="350">
+            <Label text="Datos generales del producto" style="-fx-font-weight: bold;"/>
+            <GridPane hgap="8" vgap="6">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="120"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+                <Label text="Tipo bebida" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="cbTipo" promptText="Seleccione" maxWidth="Infinity"
+                          GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="Codigo" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtCodigo" promptText="Ej: B005" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label text="Nombre" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtNombre" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label text="Precio base ($)" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtPrecioBase" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                <Label text="Stock inicial" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtStock" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                <Label text="Volumen (ml)" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtVolumenMl" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <Separator/>
+            <Label text="Bebida Carbonatada"/>
+            <GridPane hgap="8" vgap="6">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="120"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+                <Label text="Nivel gas" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtNivelGas" promptText="Ej: 3.5" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="Sabor" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtSabor" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <Separator/>
+            <Label text="Bebida Natural"/>
+            <GridPane hgap="8" vgap="6">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="120"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+                <Label text="Fruta (1-100)" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtPorcentajeFruta" promptText="Ej: 70" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            </GridPane>
+            <CheckBox fx:id="chkConservantes" text="Contiene conservantes"/>
+
+            <Separator/>
+            <Label text="Agua Embotellada"/>
+            <GridPane hgap="8" vgap="6">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="120"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+                <Label text="Tipo de agua" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="cbTipoAgua" promptText="Seleccione" maxWidth="Infinity"
+                          GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="Origen" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtOrigen" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <Separator/>
+            <HBox spacing="8">
+                <Button fx:id="btnRegistrar" text="Registrar" defaultButton="true"
+                        prefWidth="140" onAction="#onRegistrar"/>
+                <Button fx:id="btnCancelar" text="Cancelar edicion" onAction="#onCancelar"/>
+            </HBox>
+        </VBox>
+
+        <VBox spacing="8" HBox.hgrow="ALWAYS">
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="Buscar:"/>
+                <TextField fx:id="txtBuscar" promptText="Filtrar en tiempo real por codigo, nombre o tipo..."
+                           HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+            <TableView fx:id="tablaProductos" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colCodigo" text="Codigo" prefWidth="70"/>
+                    <TableColumn fx:id="colNombre" text="Nombre" prefWidth="150"/>
+                    <TableColumn fx:id="colTipo" text="Tipo" prefWidth="140"/>
+                    <TableColumn fx:id="colPrecioBase" text="Precio Base" prefWidth="90"/>
+                    <TableColumn fx:id="colPrecioFinal" text="Precio Final" prefWidth="95"/>
+                    <TableColumn fx:id="colStock" text="Stock" prefWidth="65"/>
+                    <TableColumn fx:id="colDescripcion" text="Descripcion" prefWidth="210"/>
+                </columns>
+            </TableView>
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Button text="Editar seleccionado" onAction="#onEditar"/>
+                <Button text="Eliminar seleccionado" onAction="#onEliminar"/>
+            </HBox>
+            <Separator/>
+            <Label text="Registrar ingreso de produccion (al producto seleccionado en la tabla)"
+                   style="-fx-font-weight: bold;"/>
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="Unidades:"/>
+                <TextField fx:id="txtProdUnidades" promptText="Ej: 50" prefWidth="75"/>
+                <Button text="Sumar unidades" onAction="#onSumarUnidades"/>
+                <Separator orientation="VERTICAL"/>
+                <Label text="Cajas:"/>
+                <TextField fx:id="txtProdCajas" promptText="Ej: 4" prefWidth="60"/>
+                <Label text="Uds/caja:"/>
+                <TextField fx:id="txtProdUdsCaja" promptText="Ej: 12" prefWidth="65"/>
+                <Button text="Sumar por cajas" onAction="#onSumarPorCajas"/>
+            </HBox>
+        </VBox>
+    </HBox>
+
+    <Label fx:id="lblMensaje" maxWidth="Infinity" minHeight="32" wrapText="true"/>
+</VBox>
